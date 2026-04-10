@@ -1,13 +1,13 @@
 const LINKS = {
   portfolio: "https://kenshin-terashima.com/",
-  x: "https://x.com/kenshin_design",
+  x: "https://x.com/kenshin_design_",
 };
 
 const navItems = [
   { index: "01", name: "Portfolio", description: "Web制作の実績", href: LINKS.portfolio, external: true },
   { index: "02", name: "X (Twitter)", description: "日々の思考と発信", href: LINKS.x, external: true },
   { index: "03", name: "Favorites", description: "好きなことを100個", href: "#favorites", external: false },
-  { index: "04", name: "Contact", description: "お仕事のご相談", href: "mailto:hello@kenshin-terashima.com", external: true },
+  { index: "04", name: "Contact", description: "お仕事のご相談", href: "https://forms.gle/dE1gUqtRQKs2yS5z7", external: true },
 ];
 
 const favorites = [
@@ -168,7 +168,6 @@ function renderHome() {
         <p>フリーランスでWeb制作をしています。デザインからコーディングまで一貫対応。働き方そのものをデザインすることをテーマに活動しています。</p>
       </div>
     </div>
-    <div class="ruler"></div>
     <div class="section-label"><p class="eyebrow">Navigation</p></div>
     <div class="nav-grid">
       ${navItems
@@ -192,7 +191,7 @@ function renderFavorites() {
     <div class="section-head">
       <p class="eyebrow">03 - Favorites</p>
       <h1 class="title-lg">My Favorites</h1>
-      <div class="split" style="border-top:1px solid var(--black)">
+      <div class="split">
         <strong>About</strong>
         <p>好きなことを100個並べています。自分を構成している要素です。</p>
       </div>
@@ -225,7 +224,7 @@ function renderCategory(slug) {
     <div class="section-head">
       <p class="eyebrow">${cat.index} - ${cat.label}</p>
       <h1 class="title-lg">${cat.label}</h1>
-      <div class="split" style="border-top:1px solid var(--black)">
+      <div class="split">
         <strong>Items</strong>
         <p>${cat.items.length}個のアイテム。ホバーで一言コメントが表示されます。</p>
       </div>
