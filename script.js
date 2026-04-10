@@ -14,7 +14,7 @@ const favoriteImages = favoriteImageFiles.map((file, i) => ({
 const navItems = [
   { index: "01", name: "Portfolio", description: "Web制作の実績", href: LINKS.portfolio, external: true },
   { index: "02", name: "X (Twitter)", description: "日々の思考と発信", href: LINKS.x, external: true },
-  { index: "03", name: "Favorites", description: "好きなことを100個", href: "#favorites", external: false },
+  { index: "03", name: "Favorites", description: "私の趣味", href: "#favorites", external: false },
   { index: "04", name: "Contact", description: "お仕事のご相談", href: "https://forms.gle/dE1gUqtRQKs2yS5z7", external: true },
 ];
 
@@ -26,13 +26,11 @@ function renderHome() {
   byId("home-view").innerHTML = `
     <div class="section-head">
       <div class="name-row">
-        <div class="name-text">
-          <h1 class="title-xl title-name">寺嶋 絃真</h1>
-          <p class="name-furigana">てらしま けんしん</p>
-        </div>
-        <img class="profile-photo" src="./images/kenshin.png" alt="寺嶋 絃真の顔写真" loading="lazy" />
+        <h1 class="title-xl title-name">寺嶋 絃真</h1>
+        <p class="name-furigana">てらしま けんしん</p>
       </div>
       <p class="role">Web Designer & Corder</p>
+      <img class="profile-photo" src="./images/kenshin.png" alt="寺嶋 絃真の顔写真" loading="lazy" />
     </div>
     <div class="section-label"><p class="eyebrow">Navigation</p></div>
     <div class="nav-grid">
