@@ -114,8 +114,13 @@ a {
 
 .name-row {
   display: flex;
-  align-items: baseline;
-  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.name-text {
+  min-width: 0;
 }
 
 .title-name {
@@ -127,6 +132,15 @@ a {
   font-size: 14px;
   font-weight: 500;
   color: var(--color-text-secondary);
+}
+
+.profile-photo {
+  width: 168px;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius-card);
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 0;
 }
 
 .title-lg {
@@ -454,6 +468,10 @@ body.modal-open {
 
   .section-head {
     padding: 24px 12px 16px;
+  }
+
+  .profile-photo {
+    width: 136px;
   }
 
   .section-label {

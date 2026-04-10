@@ -26,8 +26,11 @@ function renderHome() {
   byId("home-view").innerHTML = `
     <div class="section-head">
       <div class="name-row">
-        <h1 class="title-xl title-name">寺嶋 絃真</h1>
-        <p class="name-furigana">てらしま けんしん</p>
+        <div class="name-text">
+          <h1 class="title-xl title-name">寺嶋 絃真</h1>
+          <p class="name-furigana">てらしま けんしん</p>
+        </div>
+        <img class="profile-photo" src="./images/kenshin.png" alt="寺嶋 絃真の顔写真" loading="lazy" />
       </div>
       <p class="role">Web Designer & Corder</p>
     </div>
