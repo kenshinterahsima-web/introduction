@@ -80,14 +80,38 @@ function renderFavorites() {
       ${favoriteImages
         .map(
           (image) => `
-            <div class="favorite-image-tile">
+            <button class="favorite-image-tile" type="button" data-image-src="${image.src}" data-image-alt="${image.alt}">
               <img src="${image.src}" alt="${image.alt}" loading="lazy" />
-            </div>
+            </button>
           `
         )
         .join("")}
     </div>
+    <div class="image-modal hidden" id="image-modal" role="dialog" aria-modal="true" aria-label="Favorite image preview">
+      <button class="image-modal-backdrop" type="button" id="image-modal-backdrop" aria-label="Close preview"></button>
+      <div class="image-modal-content">
+        <img id="image-modal-preview" src="" alt="" />
+      </div>
+    </div>
   `;
+}
+
+function openImageModal(src, alt) {
+  const modal = byId("image-modal");
+  const preview = byId("image-modal-preview");
+  if (!modal || !preview) return;
+  preview.src = src;
+  preview.alt = alt;
+  modal.classList.remove("hidden");
+}
+
+function closeImageModal() {
+  const modal = byId("image-modal");
+  const preview = byId("image-modal-preview");
+  if (!modal || !preview) return;
+  modal.classList.add("hidden");
+  preview.src = "";
+  preview.alt = "";
 }
 
 function setView(route) {
@@ -126,7 +150,27 @@ function boot() {
   renderHome();
   renderFavorites();
   setView(normalizeRoute());
+
+  byId("favorites-view").addEventListener("click", (event) => {
+    const tile = event.target.closest(".favorite-image-tile");
+    if (tile) {
+      openImageModal(tile.dataset.imageSrc, tile.dataset.imageAlt);
+      return;
+    }
+
+    if (event.target.id === "image-modal-backdrop") {
+      closeImageModal();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeImageModal();
+    }
+  });
+
   window.addEventListener("hashchange", () => {
+    closeImageModal();
     setView(normalizeRoute());
   });
 }

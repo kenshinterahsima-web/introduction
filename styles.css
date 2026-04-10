@@ -250,9 +250,45 @@ a {
   border-radius: var(--radius-card);
   overflow: hidden;
   background: var(--color-surface);
+  border: 0;
+  padding: 0;
+  cursor: pointer;
 }
 
 .favorite-image-tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.image-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.image-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.image-modal-content {
+  position: relative;
+  width: min(92vw, 460px);
+  aspect-ratio: 1 / 1;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+}
+
+.image-modal-content img {
   width: 100%;
   height: 100%;
   object-fit: cover;
