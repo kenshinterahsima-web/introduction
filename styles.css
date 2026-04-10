@@ -375,3 +375,32 @@ a {
 .fade-up {
   animation: fadeUp 0.32s ease forwards;
 }
+
+@media (max-width: 768px) {
+  #home-view {
+    min-height: calc(100dvh - 72px);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .section-head {
+    padding: 16px 12px 8px;
+  }
+
+  .section-label {
+    padding: 4px 12px 8px;
+  }
+
+  .nav-grid {
+    flex: 1;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    padding: 0 12px 12px;
+  }
+
+  .nav-card {
+    min-height: 0;
+    height: 100%;
+  }
+}
