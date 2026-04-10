@@ -1,0 +1,290 @@
+:root {
+  --white: #ffffff;
+  --black: #0a0a0a;
+  --gray-100: #f5f5f5;
+  --gray-200: #e8e8e8;
+  --gray-400: #aaaaaa;
+  --gray-600: #666666;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--white);
+  color: var(--black);
+  font-family: "IBM Plex Sans", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.site {
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.top-nav {
+  position: sticky;
+  top: 0;
+  background: var(--white);
+  z-index: 10;
+  border-bottom: 1px solid var(--black);
+  padding: 20px 24px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.back-link {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--gray-600);
+}
+
+.hidden {
+  display: none !important;
+}
+
+.section-head {
+  padding: 40px 24px 32px;
+}
+
+.eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gray-400);
+}
+
+.title-xl {
+  font-size: 52px;
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin: 12px 0;
+}
+
+.title-lg {
+  font-size: 36px;
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  margin-bottom: 32px;
+}
+
+.role {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gray-600);
+  margin-bottom: 40px;
+}
+
+.split {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 0 20px;
+  border-top: 1px solid var(--gray-200);
+  padding-top: 20px;
+}
+
+.split strong {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gray-400);
+  padding-top: 2px;
+  font-weight: 400;
+}
+
+.split p {
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--gray-600);
+}
+
+.ruler {
+  height: 1px;
+  background: var(--black);
+  margin: 0 24px;
+}
+
+.section-label {
+  padding: 28px 24px 12px;
+}
+
+.nav-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.nav-card {
+  display: block;
+  position: relative;
+  border-top: 1px solid var(--gray-200);
+  padding: 20px 24px;
+}
+
+.nav-card:nth-child(odd) {
+  border-right: 1px solid var(--gray-200);
+}
+
+.nav-card:hover {
+  background: var(--gray-100);
+}
+
+.index {
+  font-size: 10px;
+  color: var(--gray-400);
+  margin-bottom: 12px;
+}
+
+.arrow {
+  position: absolute;
+  top: 20px;
+  right: 16px;
+  font-size: 10px;
+  color: var(--gray-400);
+}
+
+.name {
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  margin-bottom: 6px;
+}
+
+.desc {
+  font-size: 11px;
+  color: var(--gray-600);
+  font-weight: 300;
+}
+
+.category-list {
+  margin-top: 32px;
+}
+
+.category-row {
+  display: grid;
+  grid-template-columns: 40px 1fr 56px 24px;
+  align-items: center;
+  padding: 16px 24px;
+  border-top: 1px solid var(--gray-200);
+}
+
+.category-row:first-child {
+  border-top: 1px solid var(--black);
+}
+
+.category-row:hover {
+  background: var(--gray-100);
+}
+
+.category-number,
+.category-count,
+.category-arrow {
+  font-size: 10px;
+  color: var(--gray-400);
+}
+
+.category-name {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.category-count,
+.category-arrow {
+  text-align: right;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--gray-200);
+  border-top: 1px solid var(--gray-200);
+}
+
+.tile {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  background: var(--white);
+  overflow: hidden;
+}
+
+.tile-inner {
+  width: 100%;
+  height: 100%;
+  background: var(--gray-100);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.emoji {
+  font-size: 22px;
+}
+
+.tile-name {
+  font-size: 9px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--gray-600);
+  text-align: center;
+  padding: 0 4px;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.88);
+  display: flex;
+  align-items: flex-end;
+  padding: 8px;
+  opacity: 0;
+  transition: opacity 0.18s;
+}
+
+.tile:hover .overlay {
+  opacity: 1;
+}
+
+.comment {
+  font-size: 9px;
+  color: var(--white);
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up {
+  animation: fadeUp 0.32s ease forwards;
+}
