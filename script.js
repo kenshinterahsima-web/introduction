@@ -160,8 +160,10 @@ function byId(id) {
 function renderHome() {
   byId("home-view").innerHTML = `
     <div class="section-head">
-      <p class="eyebrow">Web Designer Freelance 2025-</p>
-      <h1 class="title-xl">寺嶋 絃真</h1>
+      <div class="name-row">
+        <h1 class="title-xl title-name">寺嶋 絃真</h1>
+        <p class="name-furigana">てらしま けんしん</p>
+      </div>
       <p class="role">Web Designer</p>
     </div>
     <div class="section-label"><p class="eyebrow">Navigation</p></div>

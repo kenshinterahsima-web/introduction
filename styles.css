@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap");
 
 :root {
   /* Airbnb-inspired palette */
@@ -34,8 +34,9 @@
 body {
   background: var(--color-bg);
   color: var(--color-text);
-  font-family: "Plus Jakarta Sans", Circular, -apple-system, system-ui, Roboto,
-    "Helvetica Neue", sans-serif;
+  font-family: Inter, "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic UI",
+    "Yu Gothic", "Meiryo", sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -91,7 +92,7 @@ a {
 /* ── Section header ─────────────────────────────────── */
 
 .section-head {
-  padding: 36px 24px 28px;
+  padding: 24px 20px 12px;
 }
 
 .eyebrow {
@@ -111,6 +112,23 @@ a {
   margin-bottom: 8px;
 }
 
+.name-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.title-name {
+  font-size: 34px;
+  margin-bottom: 0;
+}
+
+.name-furigana {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+}
+
 .title-lg {
   font-size: 28px;
   font-weight: 700;
@@ -123,7 +141,8 @@ a {
   font-size: 13px;
   font-weight: 600;
   color: var(--color-accent);
-  margin-bottom: 28px;
+  margin-bottom: 0;
+  margin-top: 8px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
@@ -155,23 +174,27 @@ a {
 /* ── Nav section ────────────────────────────────────── */
 
 .section-label {
-  padding: 20px 24px 12px;
+  padding: 8px 20px 10px;
 }
 
 .nav-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  padding: 0 16px 24px;
+  gap: 10px;
+  padding: 0 12px 28px;
 }
 
 .nav-card {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   position: relative;
-  background: var(--color-bg);
+  background: #ffffff;
+  border: 1px solid #ffd7ad;
   border-radius: var(--radius-card);
   box-shadow: var(--shadow-card);
-  padding: 20px 20px 18px;
+  min-height: 132px;
+  padding: 18px 16px;
   transition: box-shadow 0.2s, transform 0.2s;
 }
 
@@ -181,34 +204,36 @@ a {
 }
 
 .index {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   color: var(--color-text-disabled);
-  margin-bottom: 10px;
+  margin-bottom: 6px;
 }
 
 .arrow {
   position: absolute;
-  top: 18px;
+  top: 50%;
   right: 16px;
-  font-size: 12px;
+  transform: translateY(-50%);
+  font-size: 18px;
   color: var(--color-accent);
   font-weight: 700;
 }
 
 .name {
-  font-size: 15px;
-  font-weight: 600;
+  font-size: 20px;
+  font-weight: 500;
   letter-spacing: -0.1px;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
   color: var(--color-text);
 }
 
 .desc {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 400;
   color: var(--color-text-secondary);
   line-height: 1.4;
+  padding-right: 28px;
 }
 
 /* ── Category list ──────────────────────────────────── */
