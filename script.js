@@ -3,6 +3,12 @@ const LINKS = {
   x: "https://x.com/kenshin_design_",
 };
 
+const favoriteImages = Array.from({ length: 20 }, (_, i) => ({
+  id: i + 1,
+  src: `https://picsum.photos/seed/terashima-fav-${i + 1}/600/600`,
+  alt: `Favorite image ${i + 1}`,
+}));
+
 const navItems = [
   { index: "01", name: "Portfolio", description: "Web制作の実績", href: LINKS.portfolio, external: true },
   { index: "02", name: "X (Twitter)", description: "日々の思考と発信", href: LINKS.x, external: true },
@@ -164,7 +170,7 @@ function renderHome() {
         <h1 class="title-xl title-name">寺嶋 絃真</h1>
         <p class="name-furigana">てらしま けんしん</p>
       </div>
-      <p class="role">Web Designer</p>
+      <p class="role">Web Designer & Corder</p>
     </div>
     <div class="section-label"><p class="eyebrow">Navigation</p></div>
     <div class="nav-grid">
@@ -190,16 +196,13 @@ function renderFavorites() {
       <p class="eyebrow">03 - Favorites</p>
       <h1 class="title-lg">My Favorites</h1>
     </div>
-    <div class="category-list">
-      ${favorites
+    <div class="favorites-grid">
+      ${favoriteImages
         .map(
-          (cat, i) => `
-            <a class="category-row" href="#favorites/${cat.slug}">
-              <span class="category-number">${String(i + 1).padStart(2, "0")}</span>
-              <span class="category-name">${cat.label}</span>
-              <span class="category-count">${cat.items.length}</span>
-              <span class="category-arrow">→</span>
-            </a>
+          (image) => `
+            <div class="favorite-image-tile">
+              <img src="${image.src}" alt="${image.alt}" loading="lazy" />
+            </div>
           `
         )
         .join("")}
@@ -255,12 +258,7 @@ function setView(route) {
   backLink.classList.add("hidden");
 
   if (route.startsWith("favorites/")) {
-    const slug = route.replace("favorites/", "");
-    renderCategory(slug);
-    categoryView.classList.remove("hidden");
-    backLink.classList.remove("hidden");
-    backLink.setAttribute("href", "#favorites");
-    document.title = `${favorites.find((c) => c.slug === slug)?.label || "Favorites"} | 寺嶋 絃真`;
+    location.hash = "#favorites";
     return;
   }
 
