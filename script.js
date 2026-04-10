@@ -59,38 +59,62 @@ function renderFavorites() {
       ${favoriteImages
         .map(
           (image) => `
-            <button class="favorite-image-tile" type="button" data-image-src="${image.src}" data-image-alt="${image.alt}">
-              <img src="${image.src}" alt="${image.alt}" loading="lazy" />
-            </button>
+            <div class="favorite-image-tile">
+              <button class="favorite-image-trigger" type="button" data-src="${image.src}" data-alt="${image.alt}" aria-label="${image.alt}を拡大表示">
+                <img src="${image.src}" alt="${image.alt}" loading="lazy" />
+              </button>
+            </div>
           `
         )
         .join("")}
     </div>
-    <div class="image-modal hidden" id="image-modal" role="dialog" aria-modal="true" aria-label="Favorite image preview">
-      <button class="image-modal-backdrop" type="button" id="image-modal-backdrop" aria-label="Close preview"></button>
-      <div class="image-modal-content">
-        <img id="image-modal-preview" src="" alt="" />
-      </div>
-    </div>
   `;
-}
-
-function openImageModal(src, alt) {
-  const modal = byId("image-modal");
-  const preview = byId("image-modal-preview");
-  if (!modal || !preview) return;
-  preview.src = src;
-  preview.alt = alt;
-  modal.classList.remove("hidden");
 }
 
 function closeImageModal() {
   const modal = byId("image-modal");
-  const preview = byId("image-modal-preview");
-  if (!modal || !preview) return;
+  const modalImg = byId("image-modal-img");
   modal.classList.add("hidden");
-  preview.src = "";
-  preview.alt = "";
+  modal.setAttribute("aria-hidden", "true");
+  modalImg.setAttribute("src", "");
+  modalImg.setAttribute("alt", "");
+  document.body.classList.remove("modal-open");
+}
+
+function openImageModal(src, alt) {
+  const modal = byId("image-modal");
+  const modalImg = byId("image-modal-img");
+  modalImg.setAttribute("src", src);
+  modalImg.setAttribute("alt", alt);
+  modal.classList.remove("hidden");
+  modal.setAttribute("aria-hidden", "false");
+  document.body.classList.add("modal-open");
+}
+
+function setupImageModal() {
+  const favoritesView = byId("favorites-view");
+  const modal = byId("image-modal");
+  const closeButton = byId("image-modal-close");
+
+  favoritesView.addEventListener("click", (event) => {
+    const trigger = event.target.closest(".favorite-image-trigger");
+    if (!trigger) return;
+    openImageModal(trigger.dataset.src, trigger.dataset.alt);
+  });
+
+  closeButton.addEventListener("click", closeImageModal);
+
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal) {
+      closeImageModal();
+    }
+  });
+
+  window.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !modal.classList.contains("hidden")) {
+      closeImageModal();
+    }
+  });
 }
 
 function setView(route) {
@@ -128,28 +152,10 @@ function normalizeRoute() {
 function boot() {
   renderHome();
   renderFavorites();
+  setupImageModal();
   setView(normalizeRoute());
 
-  byId("favorites-view").addEventListener("click", (event) => {
-    const tile = event.target.closest(".favorite-image-tile");
-    if (tile) {
-      openImageModal(tile.dataset.imageSrc, tile.dataset.imageAlt);
-      return;
-    }
-
-    if (event.target.id === "image-modal-backdrop") {
-      closeImageModal();
-    }
-  });
-
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-      closeImageModal();
-    }
-  });
-
   window.addEventListener("hashchange", () => {
-    closeImageModal();
     setView(normalizeRoute());
   });
 }
