@@ -161,12 +161,8 @@ function renderHome() {
   byId("home-view").innerHTML = `
     <div class="section-head">
       <p class="eyebrow">Web Designer Freelance 2025-</p>
-      <h1 class="title-xl">けんしん</h1>
+      <h1 class="title-xl">寺嶋 絃真</h1>
       <p class="role">Web Designer</p>
-      <div class="split">
-        <strong>About</strong>
-        <p>フリーランスでWeb制作をしています。デザインからコーディングまで一貫対応。働き方そのものをデザインすることをテーマに活動しています。</p>
-      </div>
     </div>
     <div class="section-label"><p class="eyebrow">Navigation</p></div>
     <div class="nav-grid">
@@ -191,10 +187,6 @@ function renderFavorites() {
     <div class="section-head">
       <p class="eyebrow">03 - Favorites</p>
       <h1 class="title-lg">My Favorites</h1>
-      <div class="split">
-        <strong>About</strong>
-        <p>好きなことを100個並べています。自分を構成している要素です。</p>
-      </div>
     </div>
     <div class="category-list">
       ${favorites
@@ -266,7 +258,7 @@ function setView(route) {
     categoryView.classList.remove("hidden");
     backLink.classList.remove("hidden");
     backLink.setAttribute("href", "#favorites");
-    document.title = `${favorites.find((c) => c.slug === slug)?.label || "Favorites"} | けんしん`;
+    document.title = `${favorites.find((c) => c.slug === slug)?.label || "Favorites"} | 寺嶋 絃真`;
     return;
   }
 
@@ -274,12 +266,12 @@ function setView(route) {
     favoritesView.classList.remove("hidden");
     backLink.classList.remove("hidden");
     backLink.setAttribute("href", "#home");
-    document.title = "Favorites | けんしん";
+    document.title = "Favorites | 寺嶋 絃真";
     return;
   }
 
   homeView.classList.remove("hidden");
-  document.title = "けんしん | Web Designer";
+  document.title = "寺嶋 絃真 | Web Designer";
 }
 
 function normalizeRoute() {
